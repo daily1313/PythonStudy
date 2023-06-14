@@ -1,15 +1,17 @@
 import random
 
-
 alpha_index = ['A', 'B', 'C', 'D', 'E']
 
-def getWinningLottoNumbersList() :
+
+def getWinningLottoNumbersList():
     winningNumber = set()
     while len(winningNumber) < 6:
         winningNumber.add(random.randint(1, 45))
     winningNumber = list(winningNumber)
     winningNumber.sort()
     return winningNumber
+
+
 def getUserLottoNumbersList():
     number = set()
     while len(number) < 6:
@@ -17,8 +19,12 @@ def getUserLottoNumbersList():
     number = list(number)
     number.sort()
     return number
-def getBonusNumber() :
+
+
+def getBonusNumber():
     return random.randint(1, 45)
+
+
 def compare_lotto_numbers(user_lotto_numbers, winning_numbers, bonus_number):
     count = 0
     bonus_count = 0
@@ -32,6 +38,7 @@ def compare_lotto_numbers(user_lotto_numbers, winning_numbers, bonus_number):
 
     return [count, bonus_count]
 
+
 def getMatchNumbers(user_lotto_numbers, winning_numbers, bonus_number):
     matchedNumbers = []
     for number in user_lotto_numbers:
@@ -41,6 +48,8 @@ def getMatchNumbers(user_lotto_numbers, winning_numbers, bonus_number):
     if bonus_number in user_lotto_numbers:
         matchedNumbers.append(number)
     return matchedNumbers
+
+
 def getRank(count_list):
     if count_list[0] == 6:
         print(f'일치하는 개수: {count_list[0]}, 1등')
@@ -82,9 +91,3 @@ for i in range(0, 5):
             else:
                 print(f'{number}', end=' ')
     print()
-
-
-
-
-
-
