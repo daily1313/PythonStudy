@@ -28,7 +28,7 @@ def get_winning_lotto_numbers_list():
 def get_user_lotto_numbers_list():
     user_lotto_numbers_list = set()
     while len(user_lotto_numbers_list) < ONE_LOTTO_LENGTH:
-        user_lotto_numbers_list.add(random.randint(1, 45))
+        user_lotto_numbers_list.add(random.randint(LOTTO_FIRST_NUMBER, LOTTO_LAST_NUMBER))
     return sorted(user_lotto_numbers_list)
 
 
