@@ -6,16 +6,22 @@
 
 import random
 
-FIRST_NUMBER = 1
-LAST_NUMBER = 45
+LOTTO_FIRST_NUMBER = 1
+LOTTO_LAST_NUMBER = 45
 ONE_LOTTO_LENGTH = 6
 ALPHA_INDEX = ['A', 'B', 'C', 'D', 'E']
+GAME_START_MESSAGE = '로또 게임을 시작합니다.'
+INVALID_COMMAND_MESSAGE = '잘못된 명령을 입력하였습니다.'
+GAME_OVER_MESSAGE = '게임을 종료합니다.'
+MESSAGE_ASKING_IF_YOU_WANT_TO_START_THE_GAME = '로또 게임을 시작하시겠습니까 ? (y/n)'
+MESSAGE_ASKING_IF_YOU_WANT_TO_RESTART_THE_GAME = '로또 게임을 다시 진행하실건가요 ? (c/q)'
+NUMBER_OF_LOTTO_TICKETS_TO_BUY = '구매할 로또 장 수: '
 
 
 def get_winning_lotto_numbers_list():
     winning_numbers_list = set()
     while len(winning_numbers_list) < ONE_LOTTO_LENGTH:
-        winning_numbers_list.add(random.randint(FIRST_NUMBER, LAST_NUMBER))
+        winning_numbers_list.add(random.randint(LOTTO_FIRST_NUMBER, LOTTO_LAST_NUMBER))
     return sorted(winning_numbers_list)
 
 
@@ -32,7 +38,7 @@ def print_user_lotto_numbers_list(user_lotto_numbers_list):
 
 
 def get_bonus_number():
-    return random.randint(FIRST_NUMBER, LAST_NUMBER)
+    return random.randint(LOTTO_FIRST_NUMBER, LOTTO_LAST_NUMBER)
 
 
 def compare_lotto_numbers(user_lotto_numbers, winning_numbers, bonus_number):
@@ -89,17 +95,18 @@ def print_rank(count_list):
 
 
 def ask_whether_to_play_a_game():
-    return input('로또 게임을 시작할 것인가요 ? (y/n)')
+    return input(f'{MESSAGE_ASKING_IF_YOU_WANT_TO_START_THE_GAME}')
 
 
 def ask_whether_to_continue_playing_a_game():
-    return input('로또 게임을 다시 진행하실건가요 ? (c/q)')
+    return input(f'{MESSAGE_ASKING_IF_YOU_WANT_TO_RESTART_THE_GAME}')
 
 
 def ask_how_many_lotto_tickets_to_buy():
-    return int(input('구매할 로또 장 수: '))
+    return int(input(f'{NUMBER_OF_LOTTO_TICKETS_TO_BUY}'))
 
 
+print(f'{GAME_START_MESSAGE}')
 while True:
     command = ask_whether_to_play_a_game()
     if command == 'y':
@@ -128,12 +135,12 @@ while True:
         elif restart_game_option == 'q':
             break
         else:
-            print('잘못된 명령을 입력하였습니다.')
+            print(f'{INVALID_COMMAND_MESSAGE}')
     elif command == 'n':
         break
     else:
-        print('잘못된 명령을 입력하였습니다.')
+        print(f'{INVALID_COMMAND_MESSAGE}')
 
-print('게임을 종료합니다.')
+print(f'{GAME_OVER_MESSAGE}')
 
 
